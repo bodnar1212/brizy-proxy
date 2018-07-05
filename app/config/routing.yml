@@ -1,0 +1,4 @@
+app:
+    path:     /
+    defaults: { _controller: AppBundle:Default:index}
+    methods:   [GET, POST, PUT, DELETE]
