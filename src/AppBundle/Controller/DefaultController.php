@@ -69,7 +69,7 @@ class DefaultController extends Controller
     {
         return [
             'compiler'  => 'http://compiler.brizy.io',
-            'static'    => 'http://static.brizy.io',
+            'static'    => 'https://static.brizy.io',
             '127.0.0.1' => 'http://www.brizycompiler.run'
         ];
     }
