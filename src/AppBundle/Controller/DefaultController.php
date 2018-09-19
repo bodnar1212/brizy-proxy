@@ -11,7 +11,16 @@ class DefaultController extends Controller
 {
     public function indexAction($resource, Request $request)
     {
-        $originalUrl =  $this->findOriginalUrl($request->getHost());
+        $host      = $request->getHost();
+        $base_host = 'brizycompiler.run';
+
+        if (strpos($host, $base_host) === false) {
+            return new Response("Invalid host", 500);
+        }
+
+        $host = preg_replace("/{$base_host}$/", '', $host);
+
+        $originalUrl =  $this->findOriginalUrl($host);
         if (!$originalUrl) {
             return new Response("This host can't use proxy", 500);
         }
@@ -68,10 +77,9 @@ class DefaultController extends Controller
     private function getUrlsByKeyWord()
     {
         return [
-            'compiler'  => 'http://compiler.brizy.io',
-            'static'    => 'https://static.brizy.io',
-            '127.0.0.1' => 'http://www.brizycompiler.run',
-            'app'       => 'https://app.brizy.io'
+            'compiler' => 'http://compiler.brizy.io',
+            'static'   => 'https://static.brizy.io',
+            'app'      => 'https://app.brizy.io'
         ];
     }
 
@@ -80,7 +88,6 @@ class DefaultController extends Controller
         return [
             'compiler',
             'static',
-            '127.0.0.1',
             'app'
         ];
     }
