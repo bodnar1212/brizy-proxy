@@ -79,7 +79,8 @@ class DefaultController extends Controller
         return [
             'compiler' => 'http://compiler.brizy.io',
             'static'   => 'https://static.brizy.io',
-            'app'      => 'https://app.brizy.io'
+            'app'      => 'https://app.brizy.io',
+            'media'    => 'https://media.brizy.cloud'
         ];
     }
 
@@ -88,7 +89,8 @@ class DefaultController extends Controller
         return [
             'compiler',
             'static',
-            'app'
+            'app',
+            'media'
         ];
     }
 
